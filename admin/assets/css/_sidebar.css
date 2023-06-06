@@ -25,8 +25,8 @@ nav {
 .sidebar__logo .logo-img {
   position: relative;
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   overflow: hidden;
   background: white;
 }
@@ -39,7 +39,6 @@ nav {
 }
 
 .barangay-name {
-  color: var(--secondary-clr);
   font-size: 18px;
   letter-spacing: 1px;
   line-height: 23px;
@@ -81,7 +80,7 @@ nav {
 
 .sidebar__links-icon {
   border-radius: 5px;
-  font-size: 1rem;
+  font-size: 1.1rem;
   width: 25px;
   height: 25px;
   display: flex;

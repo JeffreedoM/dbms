@@ -1,3 +1,10 @@
 @import url(./_root.css);
-@import url(./_sidebar.css);
 @import url(./_header.css);
+@import url(./_sidebar.css);
+
+.dataTables_wrapper .dataTables_length select {
+  border: 1px solid #aaa !important;
+  border-radius: 3px;
+  padding: 4px 25px 4px 10px !important;
+  background-color: transparent;
+}
