@@ -2,7 +2,7 @@
     <a class="sidebar__logo" href="#" target="_blank" title="Visit Link">
         <div>
             <div class="logo-img">
-                <img src="../../assets/images/silang_cavite_logo.jpg" alt="Logo of Silang" />
+                <img src="assets/images/silang_cavite_logo.jpg" alt="Logo of Silang" />
             </div>
         </div>
         <h1 class="barangay-name font-semibold">Silang, Cavite</h1>
@@ -21,19 +21,19 @@
             </a>
             <ul class="sub-menu">
                 <li class="sub-menu-item">
-                    <a href="<?php echo $projectFolder ?>admin/modules/add-data/add-brgy.php">
+                    <a href="<?php echo $projectFolder ?>admin/add-brgy.php">
                         <i class="fa-solid fa-arrow-right"></i>
                         <p class="sidebar__links-text">Add Barangay</p>
                     </a>
                 </li>
                 <li class="sub-menu-item">
-                    <a href="<?php echo $projectFolder ?>admin/modules/add-data/add-school.php">
+                    <a href="<?php echo $projectFolder ?>admin/add-school.php">
                         <i class="fa-solid fa-arrow-right"></i>
                         <p class="sidebar__links-text">Add School</p>
                     </a>
                 </li>
                 <li class="sub-menu-item">
-                    <a href="<?php echo $projectFolder ?>admin/modules/add-data/add-school-bldg.php">
+                    <a href="<?php echo $projectFolder ?>admin/add-school-bldg.php">
                         <i class="fa-solid fa-arrow-right"></i>
                         <p class="sidebar__links-text">Add School Building</p>
                     </a>

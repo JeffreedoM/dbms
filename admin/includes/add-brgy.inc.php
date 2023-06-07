@@ -1,6 +1,6 @@
 <?php
 
-include '../../../includes/dbh.inc.php';
+include 'dbh.inc.php';
 
 if (isset($_POST['add-brgy'])) {
     $barangay_name = $_POST['barangay_name'];

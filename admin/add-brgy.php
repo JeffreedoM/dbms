@@ -1,12 +1,8 @@
 <?php
-include '../../includes/session.inc.php';
+include 'includes/session.inc.php';
+include 'includes/functions.inc.php';
 
-$query = "SELECT * FROM tbl_barangays";
-$stmt = $pdo->prepare($query);
-$stmt->execute();
-
-// Fetch all rows as an associative array
-$barangays = $stmt->fetchAll();
+$barangays = $silang->getBarangays();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,18 +15,18 @@ $barangays = $stmt->fetchAll();
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/main.css">
     <title>DBMS</title>
 </head>
 
 <body>
     <?php
-    include '../../nav_sidebar.php';
+    include 'partials/nav_sidebar.php';
     ?>
 
     <main class="main-content">
         <?php
-        include '../../nav_header.php';
+        include 'partials/nav_header.php';
         ?>
 
         <div class="wrapper">
@@ -72,8 +68,8 @@ $barangays = $stmt->fetchAll();
         </div>
     </main>
 
-    <script src="../../assets/js/sidebar.js"></script>
-    <script src="../../assets/js/header.js"></script>
+    <script src="assets/js/sidebar.js"></script>
+    <script src="assets/js/header.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>

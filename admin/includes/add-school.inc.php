@@ -1,6 +1,6 @@
 <?php
 
-include '../../../includes/dbh.inc.php';
+include 'dbh.inc.php';
 
 if (isset($_POST['add-school'])) {
     $school_name = $_POST['school_name'];
