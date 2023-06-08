@@ -4,6 +4,8 @@ include 'includes/functions.inc.php';
 
 $schools = $silang->getSchools();
 $barangays = $silang->getBarangays();
+$buildings = $silang->getBuildings();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -61,6 +63,22 @@ $barangays = $silang->getBarangays();
                 </div>
             </div>
             <div class="page-body">
+                <table id="bldg-table" class="row-border hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Building</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($buildings as $building) { ?>
+                            <tr>
+                                <td><?php echo $building['building_id'] ?></td>
+                                <td><?php echo $building['building_name'] ?></td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
             </div>
         </div>
     </main>
@@ -73,7 +91,7 @@ $barangays = $silang->getBarangays();
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
     <script>
         $(document).ready(function() {
-            $('#schools-table').DataTable({
+            $('#bldg-table').DataTable({
 
             });
 

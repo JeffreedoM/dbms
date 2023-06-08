@@ -33,6 +33,19 @@ class Silang
 
         return $schools;
     }
+
+    // Get all schools from the database
+    public function getBuildings()
+    {
+
+        $query = "SELECT * FROM tbl_school_buildings";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        // Fetch all rows as an associative array
+        $buildings = $stmt->fetchAll();
+
+        return $buildings;
+    }
 }
 
 

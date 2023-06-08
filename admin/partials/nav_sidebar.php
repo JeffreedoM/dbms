@@ -41,9 +41,9 @@
             </ul>
         </li>
         <li>
-            <a href="<?php echo $barangayURL ?>admin/account/index.php">
-                <span class="sidebar__links-icon"><i class="fa-solid fa-users-gear"></i></span>
-                <p class="sidebar__links-text">Account</p>
+            <a href="bldg-list.php">
+                <span class="sidebar__links-icon"><i class="fa-solid fa-table-list"></i></span>
+                <p class="sidebar__links-text">List of Buildings</p>
             </a>
         </li>
     </ul>
