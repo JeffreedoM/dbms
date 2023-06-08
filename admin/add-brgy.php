@@ -30,6 +30,10 @@ $barangays = $silang->getBarangays();
         ?>
 
         <div class="wrapper">
+            <?php
+            include 'includes/query-results.inc.php';
+            ?>
+
             <div class="page-header">
                 <h3 class="page-title">Add Barangay</h3>
             </div>
@@ -46,6 +50,7 @@ $barangays = $silang->getBarangays();
                         <tr>
                             <th>ID</th>
                             <th>Barangay Name</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -53,13 +58,11 @@ $barangays = $silang->getBarangays();
                             <tr>
                                 <td><?php echo $barangay['barangay_id'] ?></td>
                                 <td><?php echo $barangay['barangay_name'] ?></td>
-                                <!-- <td>
-                                    <?php if ($resident['position'] !== 'Barangay Secretary') : ?>
-                                        <button type="button" id="deleteBtn" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
-                                            <a href="includes/delete-officials.inc.php?id=<?php echo $resident['resident_id'] ?>">Delete</a>
-                                        </button>
-                                    <?php endif; ?>
-                                </td> -->
+                                <td>
+                                    <button type="button" id="deleteBtn" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2.5 mr-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+                                        <a href="includes/del-brgy.inc.php?id=<?php echo $barangay['barangay_id'] ?>" onclick="return confirm('Are you sure you want to delete his barangay?')">Delete</a>
+                                    </button>
+                                </td>
                             </tr>
                         <?php } ?>
                     </tbody>
@@ -70,6 +73,7 @@ $barangays = $silang->getBarangays();
 
     <script src="assets/js/sidebar.js"></script>
     <script src="assets/js/header.js"></script>
+    <script src="assets/js/query-results.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>

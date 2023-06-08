@@ -3,6 +3,7 @@
 @import url(./_sidebar.css);
 @import url(./_upload-img.css);
 @import url(./_login.css);
+@import url(./_alerts.css);
 
 .dataTables_wrapper .dataTables_length select {
   border: 1px solid #aaa !important;

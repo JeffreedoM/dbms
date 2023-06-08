@@ -46,6 +46,18 @@ class Silang
 
         return $buildings;
     }
+
+    // Get logged in user
+    public function getCurrentUser()
+    {
+        $query = "SELECT username FROM tbl_accounts";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        // Fetch all rows as an associative array
+        $account = $stmt->fetch();
+
+        return $account['username'];
+    }
 }
 
 

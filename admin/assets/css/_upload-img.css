@@ -6,9 +6,10 @@
   margin: auto;
   position: relative;
   overflow: hidden;
-  margin-bottom: 2rem;
   border-radius: 10px;
   border: 1px solid #ddd;
+  margin-top: 0;
+  margin-bottom: auto;
 }
 
 #photo {

@@ -1,0 +1,13 @@
+.alert {
+  width: 100%;
+  padding: 1rem 14px;
+  /* border-radius: 8px; */
+
+  font-weight: 400;
+}
+
+.alert-success {
+  color: #03543f;
+  background: #f3faf7;
+  border-top: 4px solid #84e1bc;
+}

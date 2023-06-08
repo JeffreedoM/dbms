@@ -84,6 +84,7 @@ $buildings = $silang->getBuildings();
     </main>
 
     <script src="assets/js/sidebar.js"></script>
+    <script src="assets/js/header.js"></script>
     <script src="assets/js/select-school.js"></script>
     <script src="assets/js/uploading-img.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>

@@ -64,7 +64,7 @@ $barangays = $silang->getBarangays();
                 <form action="includes/add-bldg.inc.php" method="POST" enctype="multipart/form-data">
                     <div class="lg:flex gap-4">
                         <!-- Profile Image -->
-                        <div class="profile-pic-div">
+                        <div class="profile-pic-div mb-5 lg:mb-auto">
                             <img src="assets/images/uploads/bldg_default.jpg" alt="" id="photo">
                             <input type="file" name="bldg_image" id="file" novalidate>
                             <label for="file" id="uploadBtn">Change Image</label>
