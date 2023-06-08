@@ -33,8 +33,12 @@ $buildings = $silang->getBuildings();
         ?>
 
         <div class="wrapper">
+            <?php
+            include 'includes/query-results.inc.php';
+            ?>
+
             <div class="page-header m-0">
-                <h3 class="page-title mb-6 ml-4">School Building</h3>
+                <h3 class="page-title mb-6 my-4">School Building</h3>
 
                 <!-- page tabs -->
                 <div class="border-gray-200 dark:border-gray-700">
@@ -62,12 +66,13 @@ $buildings = $silang->getBuildings();
                     </ul>
                 </div>
             </div>
-            <div class="page-body">
+            <div class="page-body rounded-none">
                 <table id="bldg-table" class="row-border hover">
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Building</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -75,6 +80,14 @@ $buildings = $silang->getBuildings();
                             <tr>
                                 <td><?php echo $building['building_id'] ?></td>
                                 <td><?php echo $building['building_name'] ?></td>
+                                <td>
+                                    <button type="button" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:focus:ring-yellow-900">
+                                        <a href="includes/edit-bldg.inc.php?id=<?php echo $building['building_id'] ?>">Edit</a>
+                                    </button>
+                                    <button type="button" id="deleteBtn" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2.5 mr-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+                                        <a href="includes/del-bldg.inc.php?id=<?php echo $building['building_id'] ?>" onclick="return confirm('Are you sure you want to delete this barangay?')">Delete</a>
+                                    </button>
+                                </td>
                             </tr>
                         <?php } ?>
                     </tbody>
@@ -85,6 +98,7 @@ $buildings = $silang->getBuildings();
 
     <script src="assets/js/sidebar.js"></script>
     <script src="assets/js/header.js"></script>
+    <script src="assets/js/query-results.js"></script>
     <script src="assets/js/select-school.js"></script>
     <script src="assets/js/uploading-img.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
