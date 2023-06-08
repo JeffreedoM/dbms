@@ -1,6 +1,7 @@
 <?php
 include 'includes/session.inc.php';
 include 'includes/functions.inc.php';
+include 'includes/modals.inc.php';
 
 $schools = $silang->getSchools();
 $barangays = $silang->getBarangays();
@@ -15,6 +16,7 @@ $barangays = $silang->getBarangays();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="assets/css/main.css">
     <title>DBMS</title>
 </head>
@@ -30,6 +32,10 @@ $barangays = $silang->getBarangays();
         ?>
 
         <div class="wrapper">
+            <?php
+            include 'includes/query-results.inc.php';
+            ?>
+
             <div class="page-header">
                 <h3 class="page-title">Add School</h3>
             </div>
@@ -93,6 +99,7 @@ $barangays = $silang->getBarangays();
                         <tr>
                             <th>ID</th>
                             <th>School Name</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -100,6 +107,14 @@ $barangays = $silang->getBarangays();
                             <tr>
                                 <td><?php echo $school['school_id'] ?></td>
                                 <td><?php echo $school['school_name'] ?></td>
+                                <td>
+                                    <!-- Modal toggle -->
+                                    <button data-modal-target="<?php echo $school['school_id'] ?>" data-modal-toggle="<?php echo $school['school_id'] ?>" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:focus:ring-yellow-900">Edit</button>
+                                    <?php editSchool($school) ?>
+                                    <button type="button" id="deleteBtn" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2.5 mr-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+                                        <a href="includes/del-school.inc.php?id=<?php echo $school['school_id'] ?>" onclick="return confirm('Are you sure you want to delete this school?')">Delete</a>
+                                    </button>
+                                </td>
                             </tr>
                         <?php } ?>
                     </tbody>
@@ -110,6 +125,7 @@ $barangays = $silang->getBarangays();
 
     <script src="assets/js/sidebar.js"></script>
     <script src="assets/js/select-resident.js"></script>
+    <script src="assets/js/query-results.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
