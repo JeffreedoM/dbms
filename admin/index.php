@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $user_data = $result->fetch();
 
             // password_verify($password, $user_data['password'])
-            if ($password === $user_data['password']) {
+            if (password_verify($password, $user_data['password'])) {
                 $_SESSION['user_id'] = $user_data['user_id'];
                 header('Location: add-brgy.php');
                 die;
