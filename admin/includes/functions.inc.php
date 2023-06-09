@@ -73,6 +73,23 @@ class Silang
 
         return $account['username'];
     }
+
+    public function getSchoolOptions($selectedBarangayId)
+    {
+        $query = "SELECT school_name FROM tbl_schools WHERE barangay_id = :barangay_id";
+
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':barangay_id', $selectedBarangayId);
+        $stmt->execute();
+        $schools = $stmt->fetchAll();
+        // Store the school options in an array
+        $schoolOptions = array();
+
+        foreach ($schools as $school) {
+            $schoolOptions[] = $school['school_name'];
+        }
+        return $schoolOptions;
+    }
 }
 
 
