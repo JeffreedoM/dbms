@@ -34,7 +34,7 @@ class Silang
         return $schools;
     }
 
-    // Get all schools from the database
+    // Get all buildings from the database
     public function getBuildings()
     {
 
@@ -43,6 +43,21 @@ class Silang
         $stmt->execute();
         // Fetch all rows as an associative array
         $buildings = $stmt->fetchAll();
+
+        return $buildings;
+    }
+
+    // Get all buildings from the database
+    public function getBuildingsLazy($limit, $offset)
+    {
+        $query = "SELECT * FROM tbl_school_buildings LIMIT :limit OFFSET :offset";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+        $stmt->execute();
+
+        // Fetch all rows as an associative array
+        $buildings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         return $buildings;
     }
