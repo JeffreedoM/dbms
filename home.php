@@ -2,6 +2,16 @@
 include 'admin/includes/dbh.inc.php';
 include 'admin/includes/functions.inc.php';
 
+session_start();
+
+// Check if search results are available in the session
+if (isset($_SESSION['keyword_results'])) {
+    $searchResults = $_SESSION['keyword_results'];
+    unset($_SESSION['keyword_results']); // Clear the session variable
+    // Process and display the search results as needed
+    // ...
+}
+
 $schools = $silang->getSchools();
 $barangays = $silang->getBarangays();
 $buildings = $silang->getBuildings();
@@ -66,12 +76,12 @@ $buildings = $silang->getBuildings();
                             <select name="school" id="schoolDropdown" class="w-full rounded-lg border-none text-sm text-gray-900 border border-gray-300">
                                 <option value="" disabled selected>School</option>
                             </select>
-                            <button></button>
+                            <button class="px-5 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">Search</button>
                         </div>
                     </div>
                 </div>
                 <div class="relative w-full">
-                    <input type="search" name="keyword" id="search-dropdown" class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-50 border-l-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" placeholder="Search Mockups, Logos, Design Templates...">
+                    <input type="search" name="keyword" id="search-dropdown" class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-50 border-l-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" placeholder="Search Barangay, School, Building Name...">
                     <button type="submit" name="search" class="absolute top-0 right-0 p-2.5 text-sm font-medium text-white bg-blue-700 rounded-r-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                         <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
@@ -86,7 +96,26 @@ $buildings = $silang->getBuildings();
     <main>
         <div class="wrapper">
             <div class="card-container" id="card-container">
-                <!-- Content in here will be dynamic -->
+                <?php
+                if (isset($searchResults)) {
+                    foreach ($searchResults as $building) {
+                ?>
+                        <!-- Content in here will be dynamic -->
+                        <div class="cards">
+                            <div class="card-img">
+                                <?php if (!empty($building['bldg_image'])) : ?>
+                                    <img src="admin/assets/images/uploads/<?php echo $building['bldg_image']; ?>" alt="" srcset="" />
+                                <?php else : ?>
+                                    <img src="admin/assets/images/uploads/bldg_default.jpg" alt="" srcset="" />
+                                <?php endif; ?>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title"><?php echo $building['building_name'] ?></h3>
+                                <p>Card description</p>
+                            </div>
+                        </div>
+                <?php }
+                } ?>
             </div>
         </div>
     </main>
@@ -117,6 +146,25 @@ $buildings = $silang->getBuildings();
             }
 
             return true; // Allow form submission
+        }
+
+        // Function to check if the screen width is below a certain threshold
+        const isMobileScreen = () => {
+            return window.innerWidth <= 768; // Adjust the threshold as needed
+        };
+
+        // Apply the event listeners only on mobile screens
+        if (isMobileScreen()) {
+            let searchInput = document.getElementById('search-dropdown');
+            let dropdown = document.getElementById('dropdown-button');
+
+            searchInput.addEventListener('focus', () => {
+                dropdown.style.display = 'none';
+            });
+
+            searchInput.addEventListener('blur', () => {
+                dropdown.style.display = 'inline-flex';
+            });
         }
     </script>
 </body>
