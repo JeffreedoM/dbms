@@ -1,5 +1,5 @@
 <nav class="sidebar">
-    <a class="sidebar__logo" href="#" target="_blank" title="Visit Link">
+    <a class="sidebar__logo" href="../" target="_blank" title="Visit Link">
         <div>
             <div class="logo-img">
                 <img src="assets/images/silang_cavite_logo.jpg" alt="Logo of Silang" />

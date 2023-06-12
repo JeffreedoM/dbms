@@ -21,6 +21,24 @@ class Silang
         return $barangays;
     }
 
+    // Get one barangay from the database
+    public function getOneBarangay($barangayId)
+    {
+
+        $query = "SELECT *
+        FROM tbl_barangays b
+        JOIN tbl_schools s ON b.barangay_id = s.barangay_id
+        JOIN tbl_school_buildings sb ON s.school_id = sb.school_id
+        WHERE b.barangay_id = :barangayId";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':barangayId', $barangayId);
+        $stmt->execute();
+        // Fetch all rows as an associative array
+        $barangay = $stmt->fetch();
+
+        return $barangay;
+    }
+
     // Get all schools from the database
     public function getSchools()
     {
@@ -32,6 +50,24 @@ class Silang
         $schools = $stmt->fetchAll();
 
         return $schools;
+    }
+
+    // Get one barangay from the database
+    public function getOneSchool($barangayId)
+    {
+
+        $query = "SELECT *
+        FROM tbl_barangays b
+        JOIN tbl_schools s ON b.barangay_id = s.barangay_id
+        JOIN tbl_school_buildings sb ON s.school_id = sb.school_id
+        WHERE s.school_name = :school_name";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':school_name', $school_name);
+        $stmt->execute();
+        // Fetch all rows as an associative array
+        $school = $stmt->fetch();
+
+        return $school;
     }
 
     // Get all buildings from the database
@@ -46,6 +82,7 @@ class Silang
 
         return $buildings;
     }
+
 
     // Get all buildings from the database
     public function getBuildingsLazy($limit, $offset)

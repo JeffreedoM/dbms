@@ -29,6 +29,10 @@ fetch("assets/js/card-template.handlebars")
 
     // Function to fetch cards from the API
     const fetchCards = () => {
+      if (!fetchMore) {
+        return; // Stop fetching if fetchMore flag is false
+      }
+
       isLoading = true;
 
       fetch(`includes/cards.php?page=${page}&limit=${cardsPerPage}`)
