@@ -53,7 +53,7 @@ class Silang
     }
 
     // Get one barangay from the database
-    public function getOneSchool($barangayId)
+    public function getOneSchool($school_name)
     {
 
         $query = "SELECT *
