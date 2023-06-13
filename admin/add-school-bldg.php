@@ -79,7 +79,7 @@ $barangays = $silang->getBarangays(); ?>
 
 
                             </div>
-                            <input type="file" name="defects_img[]" multiple>
+                            <input type="file" id="imageUpload" name="defect_img[]" multiple>
                             <div id="previewContainer"></div>
 
                         </div>
