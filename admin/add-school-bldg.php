@@ -14,18 +14,58 @@ $barangays = $silang->getBarangays(); ?>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <title>DBMS</title>
 
     <style>
         .previewImage {
-            width: 150px;
-            height: 150px;
+            width: 70px;
+            height: 70px;
             object-fit: cover;
-            margin: 5px;
+            border: 1px solid #ccc;
+            margin-top: 10px;
+        }
+
+        #previewContainer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: .5rem;
+        }
+
+        .drop-area {
+            width: 100%;
+            /* height: 200px; */
+            border: 2px dashed #ccc;
+            text-align: center;
+            padding: 20px;
+            margin-top: 1.5rem;
+        }
+
+        .drop-text {
+            color: #999;
+            width: 100%;
+        }
+
+        .file-upload-label {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #ddd;
+            color: #333;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .file-upload-label i {
+            margin-right: 5px;
+            width: 100%;
+        }
+
+        #imageUpload {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
         }
     </style>
 </head>
@@ -70,17 +110,23 @@ $barangays = $silang->getBarangays(); ?>
 
                 <form action="includes/add-bldg.inc.php" method="POST" enctype="multipart/form-data">
                     <div class="lg:flex gap-4">
-                        <div>
+                        <div class="form-images">
                             <!-- Profile Image -->
                             <div class="profile-pic-div mb-5 lg:mb-auto">
                                 <img src="assets/images/uploads/bldg_default.jpg" alt="" id="photo" />
                                 <input type="file" name="bldg_image" id="file" novalidate />
                                 <label for="file" id="uploadBtn">Change Image</label>
-
-
                             </div>
-                            <input type="file" id="imageUpload" name="defect_img[]" multiple>
-                            <div id="previewContainer"></div>
+                            <!-- defects Images -->
+                            <div id="dropArea" class="drop-area">
+                                <span class="drop-text">Drag and drop images here. <br>or click the + <br></span>
+                                <label for="imageUpload" class="file-upload-label">
+                                    <i class="fas fa-plus"></i>
+                                    <input type="file" id="imageUpload" name="defect_img[]" multiple>
+                                </label>
+
+                                <div id="previewContainer"></div>
+                            </div>
 
                         </div>
 
@@ -201,14 +247,31 @@ $barangays = $silang->getBarangays(); ?>
     </main>
 
     <script>
+        const dropArea = document.getElementById('dropArea');
         const imageUpload = document.getElementById('imageUpload');
         const previewContainer = document.getElementById('previewContainer');
 
+        // Prevent the default behavior for dragover and drop events
+        dropArea.addEventListener('dragover', function(event) {
+            event.preventDefault();
+        });
+
+        dropArea.addEventListener('drop', function(event) {
+            event.preventDefault();
+
+            const files = event.dataTransfer.files;
+            handleFiles(files);
+        });
+
         imageUpload.addEventListener('change', function() {
+            const files = Array.from(this.files);
+            handleFiles(files);
+        });
+
+        function handleFiles(files) {
             previewContainer.innerHTML = ''; // Clear previous previews
 
-            const files = Array.from(this.files);
-            files.forEach(function(file) {
+            Array.from(files).forEach(function(file) {
                 const reader = new FileReader();
 
                 reader.onload = function(event) {
@@ -221,7 +284,7 @@ $barangays = $silang->getBarangays(); ?>
 
                 reader.readAsDataURL(file);
             });
-        });
+        }
     </script>
     <script src="assets/js/sidebar.js"></script>
     <script src="assets/js/select-school.js"></script>

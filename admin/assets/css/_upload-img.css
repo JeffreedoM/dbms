@@ -1,7 +1,6 @@
 /* For uploading Image */
 .profile-pic-div {
   /* height: 200px; */
-  max-width: 300px;
   height: auto;
   margin: auto;
   position: relative;
@@ -10,6 +9,10 @@
   border: 1px solid #ddd;
   margin-top: 0;
   margin-bottom: auto;
+}
+
+.form-images {
+  max-width: 300px;
 }
 
 #photo {
