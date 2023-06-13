@@ -14,9 +14,20 @@ $barangays = $silang->getBarangays(); ?>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <title>DBMS</title>
+
+    <style>
+        .previewImage {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin: 5px;
+        }
+    </style>
 </head>
 
 <body>
@@ -56,14 +67,23 @@ $barangays = $silang->getBarangays(); ?>
                 </div>
             </div>
             <div class="page-body">
+
                 <form action="includes/add-bldg.inc.php" method="POST" enctype="multipart/form-data">
                     <div class="lg:flex gap-4">
-                        <!-- Profile Image -->
-                        <div class="profile-pic-div mb-5 lg:mb-auto">
-                            <img src="assets/images/uploads/bldg_default.jpg" alt="" id="photo" />
-                            <input type="file" name="bldg_image" id="file" novalidate />
-                            <label for="file" id="uploadBtn">Change Image</label>
+                        <div>
+                            <!-- Profile Image -->
+                            <div class="profile-pic-div mb-5 lg:mb-auto">
+                                <img src="assets/images/uploads/bldg_default.jpg" alt="" id="photo" />
+                                <input type="file" name="bldg_image" id="file" novalidate />
+                                <label for="file" id="uploadBtn">Change Image</label>
+
+
+                            </div>
+                            <input type="file" name="defects_img[]" multiple>
+                            <div id="previewContainer"></div>
+
                         </div>
+
 
                         <div class="w-full flex flex-col space-y-4">
                             <div>
@@ -180,6 +200,29 @@ $barangays = $silang->getBarangays(); ?>
         </div>
     </main>
 
+    <script>
+        const imageUpload = document.getElementById('imageUpload');
+        const previewContainer = document.getElementById('previewContainer');
+
+        imageUpload.addEventListener('change', function() {
+            previewContainer.innerHTML = ''; // Clear previous previews
+
+            const files = Array.from(this.files);
+            files.forEach(function(file) {
+                const reader = new FileReader();
+
+                reader.onload = function(event) {
+                    const imageUrl = event.target.result;
+                    const previewImage = document.createElement('img');
+                    previewImage.classList.add('previewImage');
+                    previewImage.src = imageUrl;
+                    previewContainer.appendChild(previewImage);
+                };
+
+                reader.readAsDataURL(file);
+            });
+        });
+    </script>
     <script src="assets/js/sidebar.js"></script>
     <script src="assets/js/select-school.js"></script>
     <script src="assets/js/uploading-img.js"></script>
