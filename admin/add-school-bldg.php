@@ -3,20 +3,19 @@ include 'includes/session.inc.php';
 include 'includes/functions.inc.php';
 
 $schools = $silang->getSchools();
-$barangays = $silang->getBarangays();
-?>
+$barangays = $silang->getBarangays(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
-    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/main.css" />
     <title>DBMS</title>
 </head>
 
@@ -42,9 +41,7 @@ $barangays = $silang->getBarangays();
                                 <span>
                                     <i class="fa-solid fa-table-list"></i>
                                 </span>
-                                <span>
-                                    List of Buildings
-                                </span>
+                                <span> List of Buildings </span>
                             </a>
                         </li>
                         <li class="mr-2">
@@ -52,9 +49,7 @@ $barangays = $silang->getBarangays();
                                 <span>
                                     <i class="fa-solid fa-plus"></i>
                                 </span>
-                                <span>
-                                    Add Building
-                                </span>
+                                <span> Add Building </span>
                             </a>
                         </li>
                     </ul>
@@ -65,17 +60,17 @@ $barangays = $silang->getBarangays();
                     <div class="lg:flex gap-4">
                         <!-- Profile Image -->
                         <div class="profile-pic-div mb-5 lg:mb-auto">
-                            <img src="assets/images/uploads/bldg_default.jpg" alt="" id="photo">
-                            <input type="file" name="bldg_image" id="file" novalidate>
+                            <img src="assets/images/uploads/bldg_default.jpg" alt="" id="photo" />
+                            <input type="file" name="bldg_image" id="file" novalidate />
                             <label for="file" id="uploadBtn">Change Image</label>
                         </div>
 
                         <div class="w-full flex flex-col space-y-4">
                             <div>
-                                <input type="hidden" name="school_id" id="school_id">
+                                <input type="hidden" name="school_id" id="school_id" />
                                 <label for="">School</label>
                                 <!-- Toggle Modal -->
-                                <input type="text" name="school_name" id="school_name" readonly data-modal-target="school-modal" data-modal-toggle="school-modal" placeholder="School" class="w-full rounded">
+                                <input type="text" name="school_name" id="school_name" readonly data-modal-target="school-modal" data-modal-toggle="school-modal" placeholder="School" class="w-full rounded" />
                             </div>
                             <!-- Main modal -->
                             <div id="school-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -105,7 +100,7 @@ $barangays = $silang->getBarangays();
                                                 </thead>
                                                 <tbody>
                                                     <?php foreach ($schools as $school) { ?>
-                                                        <tr id="<?php echo $school['school_id'] ?>" style="cursor:pointer" data-modal-hide="school-modal">
+                                                        <tr id="<?php echo $school['school_id'] ?>" style="cursor: pointer" data-modal-hide="school-modal">
                                                             <td><?php echo $school['school_id'] ?></td>
                                                             <td><?php echo $school['school_name'] ?></td>
                                                         </tr>
@@ -118,17 +113,68 @@ $barangays = $silang->getBarangays();
                             </div>
                             <div>
                                 <label for="">Building Name</label>
-                                <input type="text" name="building_name" class="w-full rounded">
+                                <input type="text" name="building_name" class="w-full rounded" required />
                             </div>
                             <div>
                                 <label for="">Year Established</label>
-                                <input type="number" name="year_established" id="year_established" maxlength="4" name="year" min="1900" max="2099" placeholder="XXXX" class="w-full rounded">
+                                <input type="number" name="year_established" id="year_established" maxlength="4" name="year" min="1900" max="2099" placeholder="XXXX" class="w-full rounded" />
+                            </div>
+                            <div>
+                                <label for="">Location</label>
+                                <input type="text" name="location" placeholder="" class="w-full rounded" />
+                            </div>
+                            <div>
+                                <label for="">Number of Storey</label>
+                                <input type="text" name="storey" placeholder="" class="w-full rounded" />
+                            </div>
+                            <div>
+                                <label for="">Year/Edition of NSCP Used:</label>
+                                <input type="text" name="year_nscp" placeholder="" class="w-full rounded" />
+                            </div>
+                            <div>
+                                <label for="">Type of Building</label>
+                                <input type="text" name="type_of_bldg" placeholder="" class="w-full rounded" />
+                            </div>
+                            <div>
+                                <label for="">Type of Structure</label>
+                                <input type="text" name="type_of_structure" placeholder="" class="w-full rounded" />
+                            </div>
+                            <div>
+                                <label for="">Design Occupancy</label>
+                                <input type="text" name="design_occupancy" placeholder="" class="w-full rounded" />
                             </div>
 
-                            <button type="submit" name="add-bldg" id="submitButton" class="w-full block mx-auto  text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mt-5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Save</button>
+                            <div>
+                                <h3 class="mt-2 font-semibold text-lg">Summary Report</h3>
+                                <hr>
+                            </div>
+
+                            <div>
+                                <label for="">RVS Score</label>
+                                <input type="text" name="rvs_score" placeholder="" class="w-full rounded" />
+                            </div>
+                            <div>
+                                <label for="">Vulnerability</label>
+                                <input type="text" name="vulnerability" placeholder="" class="w-full rounded" />
+                            </div>
+                            <div>
+                                <label for="">Physical Conditions</label>
+                                <textarea name="physical_conditions" id="" cols="30" rows="6" class="w-full rounded-lg p-2"></textarea>
+                            </div>
+                            <div>
+                                <label for="">Compliance to Accessibility Law</label>
+                                <input type="number" name="compliance" placeholder="0-100" min="0" max="100" class="w-full rounded" />
+                            </div>
+                            <div>
+                                <label for="">Hazard/Risk Mitigation actions</label>
+                                <textarea name="mitigation_actions" id="" cols="30" rows="6" class="w-full rounded-lg p-2"></textarea>
+                            </div>
+
+                            <button type="submit" name="add-bldg" id="submitButton" class="w-full block mx-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mt-5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                                Save
+                            </button>
                         </div>
                     </div>
-
                 </form>
             </div>
         </div>
@@ -142,10 +188,7 @@ $barangays = $silang->getBarangays();
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
     <script>
         $(document).ready(function() {
-            $('#schools-table').DataTable({
-
-            });
-
+            $("#schools-table").DataTable({});
         });
     </script>
 </body>
