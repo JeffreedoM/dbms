@@ -81,11 +81,11 @@ $buildings = $silang->getBuildings();
                                 <td><?php echo $building['building_id'] ?></td>
                                 <td><?php echo $building['building_name'] ?></td>
                                 <td>
-                                    <button type="button" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:focus:ring-yellow-900">
-                                        <a href="includes/edit-bldg.inc.php?id=<?php echo $building['building_id'] ?>">Edit</a>
+                                    <button type="button" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm dark:focus:ring-yellow-900">
+                                        <a href="edit-bldg.php?id=<?php echo $building['building_id'] ?>" class="block px-5 py-2.5">Edit</a>
                                     </button>
-                                    <button type="button" id="deleteBtn" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2.5 mr-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
-                                        <a href="includes/del-bldg.inc.php?id=<?php echo $building['building_id'] ?>" onclick="return confirm('Are you sure you want to delete this barangay?')">Delete</a>
+                                    <button type="button" id="deleteBtn" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+                                        <a href="includes/del-bldg.inc.php?id=<?php echo $building['building_id'] ?>" onclick="return confirm('Are you sure you want to delete this barangay?')" class="block px-5 py-2.5">Delete</a>
                                     </button>
                                 </td>
                             </tr>

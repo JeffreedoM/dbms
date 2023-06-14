@@ -3,7 +3,13 @@ include 'includes/session.inc.php';
 include 'includes/functions.inc.php';
 
 $schools = $silang->getSchools();
-$barangays = $silang->getBarangays(); ?>
+$barangays = $silang->getBarangays();
+
+$id = $_GET['id'];
+$building = $silang->getOneBuilding($id);
+$buildingDefects = $silang->getDefectImages($id);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,6 +23,35 @@ $barangays = $silang->getBarangays(); ?>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <title>DBMS</title>
+
+    <style>
+        .defect_images {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        #defects {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            position: relative;
+            border: 1px solid #ddd;
+        }
+
+        /* #delete-defect {
+            background: red;
+            padding: 3px;
+            width: 100%;
+            border: 1px solid #555;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+
+        #delete-defect:hover {
+            background: red;
+        } */
+    </style>
 </head>
 
 <body>
@@ -62,13 +97,28 @@ $barangays = $silang->getBarangays(); ?>
                         <div class="form-images">
                             <!-- Profile Image -->
                             <div class="profile-pic-div mb-5 lg:mb-auto">
-                                <img src="assets/images/uploads/bldg_default.jpg" alt="" id="photo" />
+                                <?php if (!empty($building['bldg_image'])) : ?>
+                                    <img src="assets/images/uploads/<?php echo $building['bldg_image']; ?>" alt="" id="photo" />
+                                <?php else : ?>
+                                    <img src="assets/images/uploads/bldg_default.jpg" alt="" id="photo" />
+                                <?php endif; ?>
                                 <input type="file" name="bldg_image" id="file" novalidate />
                                 <label for="file" id="uploadBtn">Change Image</label>
                             </div>
                             <h1 class="mt-5 font-semibold">Sample Defects Found:</h1>
+                            <div class="defect_images mb-3">
+                                <?php foreach ($buildingDefects as $building) : ?>
+                                    <?php if (!empty($building['defect_images'])) : ?>
+                                        <div>
+                                            <img src="assets/images/uploads/<?php echo $building['defect_images']; ?>" alt="" id="defects" />
+                                            <a id="delete-defect" onclick="return confirm('Are you sure you want to delete this image?')" href="includes/delete-defect.inc.php?id=<?php echo $building['id'] ?>&building_id=<?php echo $building['building_id'] ?>" class="block w-full focus:outline-none text-white text-center bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-md text-sm py-1.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Delete</a>
+                                        </div>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </div>
+
                             <!-- defects Images -->
-                            <div id="dropArea" class="drop-area">
+                            <div id=" dropArea" class="drop-area">
                                 <span class="drop-text">Drag and drop images here. <br>or click the + <br></span>
                                 <label for="imageUpload" class="file-upload-label">
                                     <i class="fas fa-plus"></i>
@@ -78,6 +128,8 @@ $barangays = $silang->getBarangays(); ?>
                                 <div id="previewContainer"></div>
                             </div>
 
+
+
                         </div>
 
 
@@ -86,7 +138,7 @@ $barangays = $silang->getBarangays(); ?>
                                 <input type="hidden" name="school_id" id="school_id" />
                                 <label for="">School</label>
                                 <!-- Toggle Modal -->
-                                <input type="text" name="school_name" id="school_name" readonly data-modal-target="school-modal" data-modal-toggle="school-modal" placeholder="School" class="w-full rounded" />
+                                <input type="text" name="school_name" id="school_name" readonly data-modal-target="school-modal" data-modal-toggle="school-modal" placeholder="School" class="w-full rounded" value="<?php echo $building['school_name'] ?>" />
                             </div>
                             <!-- Main modal -->
                             <div id="school-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -129,35 +181,35 @@ $barangays = $silang->getBarangays(); ?>
                             </div>
                             <div>
                                 <label for="">Building Name</label>
-                                <input type="text" name="building_name" class="w-full rounded" required />
+                                <input type="text" name="building_name" class="w-full rounded" value="<?php echo $building['building_name'] ?>" required />
                             </div>
                             <div>
                                 <label for="">Year Established</label>
-                                <input type="number" name="year_established" id="year_established" maxlength="4" name="year" min="1900" max="2099" placeholder="XXXX" class="w-full rounded" />
+                                <input type="number" name="year_established" id="year_established" value="<?php echo $building['year_established'] ?>" maxlength="4" name="year" min="1900" max="2099" placeholder="XXXX" class="w-full rounded" />
                             </div>
                             <div>
                                 <label for="">Location</label>
-                                <input type="text" name="location" placeholder="" class="w-full rounded" />
+                                <input type="text" name="location" placeholder="" class="w-full rounded" value="<?php echo $building['location'] ?>" />
                             </div>
                             <div>
                                 <label for="">Number of Storey</label>
-                                <input type="text" name="storey" placeholder="" class="w-full rounded" />
+                                <input type="text" name="storey" placeholder="" class="w-full rounded" value="<?php echo $building['storey'] ?>" />
                             </div>
                             <div>
                                 <label for="">Year/Edition of NSCP Used:</label>
-                                <input type="text" name="year_nscp" placeholder="" class="w-full rounded" />
+                                <input type="text" name="year_nscp" placeholder="" class="w-full rounded" value="<?php echo $building['year_nscp'] ?>" />
                             </div>
                             <div>
                                 <label for="">Type of Building</label>
-                                <input type="text" name="type_of_bldg" placeholder="" class="w-full rounded" />
+                                <input type="text" name="type_of_bldg" placeholder="" class="w-full rounded" value="<?php echo $building['type_of_bldg'] ?>" />
                             </div>
                             <div>
                                 <label for="">Type of Structure</label>
-                                <input type="text" name="type_of_structure" placeholder="" class="w-full rounded" />
+                                <input type="text" name="type_of_structure" placeholder="" class="w-full rounded" value="<?php echo $building['type_of_structure'] ?>" />
                             </div>
                             <div>
                                 <label for="">Design Occupancy</label>
-                                <input type="text" name="design_occupancy" placeholder="" class="w-full rounded" />
+                                <input type="text" name="design_occupancy" placeholder="" class="w-full rounded" value="<?php echo $building['design_occupancy'] ?>" />
                             </div>
 
                             <div>
@@ -167,23 +219,23 @@ $barangays = $silang->getBarangays(); ?>
 
                             <div>
                                 <label for="">RVS Score</label>
-                                <input type="text" name="rvs_score" placeholder="" class="w-full rounded" />
+                                <input type="text" name="rvs_score" placeholder="" class="w-full rounded" value="<?php echo $building['rvs_score'] ?>" />
                             </div>
                             <div>
                                 <label for="">Vulnerability</label>
-                                <input type="text" name="vulnerability" placeholder="" class="w-full rounded" />
+                                <input type="text" name="vulnerability" placeholder="" class="w-full rounded" value="<?php echo $building['vulnerability'] ?>" />
                             </div>
                             <div>
                                 <label for="">Physical Conditions</label>
-                                <textarea name="physical_conditions" id="" cols="30" rows="6" class="w-full rounded-lg p-2"></textarea>
+                                <textarea name="physical_conditions" id="" cols="30" rows="6" class="w-full rounded-lg p-2" value="<?php echo $building['physical_conditions'] ?>"></textarea>
                             </div>
                             <div>
                                 <label for="">Compliance to Accessibility Law</label>
-                                <input type="number" name="compliance" placeholder="0-100" min="0" max="100" class="w-full rounded" />
+                                <input type="number" name="compliance" placeholder="0-100" min="0" max="100" class="w-full rounded" value="<?php echo $building['compliance'] ?>" />
                             </div>
                             <div>
                                 <label for="">Hazard/Risk Mitigation actions</label>
-                                <textarea name="mitigation_actions" id="" cols="30" rows="6" class="w-full rounded-lg p-2"></textarea>
+                                <textarea name="mitigation_actions" id="" cols="30" rows="6" class="w-full rounded-lg p-2" value="<?php echo $building['mitigation_actions'] ?>"></textarea>
                             </div>
 
                             <button type="submit" name="add-bldg" id="submitButton" class="w-full block mx-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mt-5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
@@ -195,7 +247,6 @@ $barangays = $silang->getBarangays(); ?>
             </div>
         </div>
     </main>
-
 
     <script src="assets/js/sidebar.js"></script>
     <script src="assets/js/select-school.js"></script>

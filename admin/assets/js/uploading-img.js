@@ -55,3 +55,54 @@ fileInput.addEventListener("onchange", () => {
     }
   });
 });
+
+/* Uploading defects */
+const dropArea = document.getElementById("dropArea");
+const imageUpload = document.getElementById("imageUpload");
+const previewContainer = document.getElementById("previewContainer");
+
+// Prevent the default behavior for dragover and drop events
+dropArea.addEventListener("dragover", function (event) {
+  event.preventDefault();
+});
+
+dropArea.addEventListener("drop", function (event) {
+  event.preventDefault();
+
+  const files = event.dataTransfer.files;
+  handleFiles(files);
+});
+
+imageUpload.addEventListener("change", function () {
+  const files = Array.from(this.files);
+  handleFiles(files);
+});
+
+function handleFiles(files) {
+  previewContainer.innerHTML = ""; // Clear previous previews
+
+  Array.from(files).forEach(function (file) {
+    const reader = new FileReader();
+
+    reader.onload = function (event) {
+      const imageUrl = event.target.result;
+      const previewImage = document.createElement("img");
+      previewImage.classList.add("previewImage");
+      previewImage.src = imageUrl;
+      previewContainer.appendChild(previewImage);
+    };
+
+    reader.readAsDataURL(file);
+  });
+}
+
+// Form validation
+// const schoolNameInput = document.getElementById('school_name');
+// const submitButton = document.getElementById('submitButton');
+
+submitButton.addEventListener("click", function (event) {
+  if (!schoolNameInput.value) {
+    event.preventDefault();
+    alert("Please select school name.");
+  }
+});

@@ -113,7 +113,7 @@ if (isset($_POST['add-bldg'])) {
             move_uploaded_file($fileTmp, $targetFile);
 
             // Insert image metadata into the database
-            $stmt = $pdo->prepare("INSERT INTO tbl_building_defects (building_id, images) VALUES (:building_id, :file_name)");
+            $stmt = $pdo->prepare("INSERT INTO tbl_building_defects (building_id, defect_images) VALUES (:building_id, :file_name)");
 
             $stmt->bindValue(':building_id', $building_id);
             $stmt->bindValue(':file_name', $targetFileName); // Use the generated unique file name

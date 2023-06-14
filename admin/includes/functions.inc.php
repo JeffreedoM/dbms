@@ -83,6 +83,35 @@ class Silang
         return $buildings;
     }
 
+    // Get building from the database based on its id
+    public function getOneBuilding($id)
+    {
+
+        $query = "SELECT * FROM tbl_school_buildings sb
+        JOIN tbl_schools s ON sb.school_id = s.school_id
+        JOIN tbl_barangays b ON s.barangay_id = b.barangay_id
+        WHERE building_id=:id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        // Fetch all rows as an associative array
+        $buildings = $stmt->fetch();
+
+        return $buildings;
+    }
+
+    public function getDefectImages($id)
+    {
+        $query = "SELECT * FROM tbl_building_defects WHERE building_id=:id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        // Fetch all rows as an associative array
+        $buildings = $stmt->fetchAll();
+
+        return $buildings;
+    }
+
 
     // Get all buildings from the database
     public function getBuildingsLazy($limit, $offset)
