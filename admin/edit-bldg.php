@@ -65,7 +65,11 @@ $buildingDefects = $silang->getDefectImages($id);
         ?>
 
         <div class="wrapper">
-            <div class="page-header m-0">
+            <?php
+            include 'includes/query-results.inc.php';
+            ?>
+
+            <div class="page-header m-0 mt-1">
                 <h3 class="page-title mb-6 ml-4">School Building</h3>
 
                 <!-- page tabs -->
@@ -92,7 +96,7 @@ $buildingDefects = $silang->getDefectImages($id);
             </div>
             <div class="page-body">
 
-                <form action="includes/add-bldg.inc.php" method="POST" enctype="multipart/form-data">
+                <form action="includes/edit-bldg.inc.php" method="POST" enctype="multipart/form-data">
                     <div class="lg:flex gap-4">
                         <div class="form-images">
                             <!-- Profile Image -->
@@ -135,7 +139,8 @@ $buildingDefects = $silang->getDefectImages($id);
 
                         <div class="w-full flex flex-col space-y-4">
                             <div>
-                                <input type="hidden" name="school_id" id="school_id" />
+                                <input type="hidden" name="building_id" value="<?php echo $building['building_id'] ?>">
+                                <input type="hidden" name="school_id" id="school_id" value="<?php echo $building['school_id'] ?>" />
                                 <label for="">School</label>
                                 <!-- Toggle Modal -->
                                 <input type="text" name="school_name" id="school_name" readonly data-modal-target="school-modal" data-modal-toggle="school-modal" placeholder="School" class="w-full rounded" value="<?php echo $building['school_name'] ?>" />
@@ -238,8 +243,8 @@ $buildingDefects = $silang->getDefectImages($id);
                                 <textarea name="mitigation_actions" id="" cols="30" rows="6" class="w-full rounded-lg p-2" value="<?php echo $building['mitigation_actions'] ?>"></textarea>
                             </div>
 
-                            <button type="submit" name="add-bldg" id="submitButton" class="w-full block mx-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mt-5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-                                Save
+                            <button type="submit" name="edit-bldg" id="submitButton" class="w-full block mx-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mt-5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                                Update
                             </button>
                         </div>
                     </div>
@@ -251,6 +256,7 @@ $buildingDefects = $silang->getDefectImages($id);
     <script src="assets/js/sidebar.js"></script>
     <script src="assets/js/select-school.js"></script>
     <script src="assets/js/uploading-img.js"></script>
+    <script src="assets/js/query-results.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
