@@ -52,7 +52,7 @@ class Silang
         return $schools;
     }
 
-    // Get one barangay from the database
+    // Get one school from the database
     public function getOneSchool($school_name)
     {
 
@@ -65,6 +65,23 @@ class Silang
         $stmt->bindParam(':school_name', $school_name);
         $stmt->execute();
         // Fetch all rows as an associative array
+        $school = $stmt->fetch();
+
+        return $school;
+    }
+    // Get one school from the database based on id
+    public function getSchoolById($school_id)
+    {
+
+        $query = "SELECT *
+          FROM tbl_barangays b
+          JOIN tbl_schools s ON b.barangay_id = s.barangay_id
+          JOIN tbl_school_buildings sb ON s.school_id = sb.school_id
+          WHERE s.school_id = :school_id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':school_id', $school_id);
+        $stmt->execute();
+        // Fetch the row as an associative array
         $school = $stmt->fetch();
 
         return $school;
@@ -155,6 +172,24 @@ class Silang
             $schoolOptions[] = $school['school_name'];
         }
         return $schoolOptions;
+    }
+
+    public function getBldgCountofSchool($schoolId)
+    {
+        // Prepare the query
+        $query = "SELECT COUNT(*) AS count FROM tbl_school_buildings WHERE school_id = :school_id";
+        // Prepare the statement
+        $statement = $this->pdo->prepare($query);
+        // Bind the parameter
+        $statement->bindParam(':school_id', $schoolId);
+        // Execute the statement
+        $statement->execute();
+        // Fetch the result
+        $result = $statement->fetch();
+        // Access the count value
+        $count = $result['count'];
+
+        return $count;
     }
 }
 
