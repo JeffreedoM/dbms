@@ -28,29 +28,17 @@ $buildingDefects = $silang->getDefectImages($id);
         .defect_images {
             display: flex;
             flex-wrap: wrap;
-            gap: 4px;
+            justify-content: space-around;
+            gap: 10px 0;
         }
 
         #defects {
-            width: 100px;
-            height: 100px;
+            width: 90px;
+            height: 90px;
             object-fit: cover;
             position: relative;
             border: 1px solid #ddd;
         }
-
-        /* #delete-defect {
-            background: red;
-            padding: 3px;
-            width: 100%;
-            border: 1px solid #555;
-            border-radius: 3px;
-            font-size: 14px;
-        }
-
-        #delete-defect:hover {
-            background: red;
-        } */
     </style>
 </head>
 
@@ -70,28 +58,28 @@ $buildingDefects = $silang->getDefectImages($id);
             ?>
 
             <div class="page-header m-0 mt-1">
-                <h3 class="page-title mb-6 ml-4">School Building</h3>
+                <h3 class="page-title mb-6 ml-4">Edit "<?php echo $building['building_name'] ?>"</h3>
 
-                <!-- page tabs -->
-                <div class="border-gray-200 dark:border-gray-700">
-                    <ul class="flex flex-wrap -mb-px text-sm font-medium text-center dark:text-gray-400">
-                        <li class="mr-2">
-                            <a href="bldg-list.php" class="inline-flex align-items-center gap-2 p-4 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group">
-                                <span>
-                                    <i class="fa-solid fa-table-list"></i>
-                                </span>
-                                <span> List of Buildings </span>
+                <!-- Breadcrumb -->
+                <div class="flex ml-4 mb-4" aria-label="Breadcrumb">
+                    <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                        <li class="inline-flex items-center">
+                            <a href="bldg-list.php" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
+                                <svg aria-hidden="true" class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
+                                </svg>
+                                List of Buildings
                             </a>
                         </li>
-                        <li class="mr-2">
-                            <a href="#" class="inline-flex align-items-center gap-2 p-4 bg-white rounded-t-lg active dark:text-blue-500 dark:border-blue-500 group">
-                                <span>
-                                    <i class="fa-solid fa-plus"></i>
-                                </span>
-                                <span> Add Building </span>
-                            </a>
+                        <li aria-current="page">
+                            <div class="flex items-center">
+                                <svg aria-hidden="true" class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2 dark:text-gray-400"><?php echo $building['building_name'] ?></span>
+                            </div>
                         </li>
-                    </ul>
+                    </ol>
                 </div>
             </div>
             <div class="page-body">
@@ -111,18 +99,18 @@ $buildingDefects = $silang->getDefectImages($id);
                             </div>
                             <h1 class="mt-5 font-semibold">Sample Defects Found:</h1>
                             <div class="defect_images mb-3">
-                                <?php foreach ($buildingDefects as $building) : ?>
-                                    <?php if (!empty($building['defect_images'])) : ?>
+                                <?php foreach ($buildingDefects as $buildingDefect) : ?>
+                                    <?php if (!empty($buildingDefect['defect_images'])) : ?>
                                         <div>
-                                            <img src="assets/images/uploads/<?php echo $building['defect_images']; ?>" alt="" id="defects" />
-                                            <a id="delete-defect" onclick="return confirm('Are you sure you want to delete this image?')" href="includes/delete-defect.inc.php?id=<?php echo $building['id'] ?>&building_id=<?php echo $building['building_id'] ?>" class="block w-full focus:outline-none text-white text-center bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-md text-sm py-1.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Delete</a>
+                                            <img src="assets/images/uploads/<?php echo $buildingDefect['defect_images']; ?>" alt="" id="defects" />
+                                            <a id="delete-defect" onclick="return confirm('Are you sure you want to delete this image?')" href="includes/delete-defect.inc.php?id=<?php echo $buildingDefect['id'] ?>&building_id=<?php echo $buildingDefect['building_id'] ?>" class="block w-full focus:outline-none text-white text-center bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-md text-sm py-1.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Delete</a>
                                         </div>
                                     <?php endif; ?>
                                 <?php endforeach; ?>
                             </div>
 
                             <!-- defects Images -->
-                            <div id=" dropArea" class="drop-area">
+                            <div id="dropArea" class="drop-area">
                                 <span class="drop-text">Drag and drop images here. <br>or click the + <br></span>
                                 <label for="imageUpload" class="file-upload-label">
                                     <i class="fas fa-plus"></i>

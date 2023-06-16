@@ -90,5 +90,39 @@ if (isset($_POST['edit-bldg'])) {
 
     // Execute the prepared statement
     $statement->execute($params);
+
+
+    // For uploading defect images
+    if (isset($_FILES['defect_img'])) {
+        $images = $_FILES['defect_img'];
+
+        // Iterate over each uploaded image
+        for ($i = 0; $i < count($images['name']); $i++) {
+            $fileName = $images['name'][$i];
+            $fileTmp = $images['tmp_name'][$i];
+
+            // Generate a unique name for the file
+            $uniqueName = uniqid() . '-' . bin2hex(random_bytes(8));
+            $fileExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+            $targetFileName = $uniqueName . '.' . $fileExtension;
+
+            // Move the uploaded file to a designated folder
+            $targetDir = "../assets/images/uploads/";
+            $targetFile = $targetDir . $targetFileName;
+            move_uploaded_file($fileTmp, $targetFile);
+
+            // Insert image metadata into the database
+            $stmt = $pdo->prepare("INSERT INTO tbl_building_defects (building_id, defect_images) VALUES (:building_id, :file_name)");
+
+            $stmt->bindValue(':building_id', $building_id);
+            $stmt->bindValue(':file_name', $targetFileName); // Use the generated unique file name
+            $stmt->execute();
+        }
+
+        echo "Images uploaded successfully!";
+    } else {
+        echo "No images selected!";
+    }
+
     header('Location: ../edit-bldg.php?id=' . $building_id . '&update=success');
 }
