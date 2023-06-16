@@ -96,7 +96,7 @@ function handleFiles(files) {
   });
 }
 
-// Form validation
+// Form validation - prevent submit if required fields not filled.
 // const schoolNameInput = document.getElementById('school_name');
 // const submitButton = document.getElementById('submitButton');
 
