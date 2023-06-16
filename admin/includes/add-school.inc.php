@@ -30,6 +30,6 @@ if (isset($_POST['add-school'])) {
     // Execute the statement
     $statement->execute();
 
-    echo "<script>alert('Insertion successful!');</script>";
-    header('Location: ../add-school.php');
+    // echo "<script>alert('Insertion successful!');</script>";
+    header('Location: ../add-school.php?message=Successfully Added School!');
 }

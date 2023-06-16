@@ -41,6 +41,12 @@
             </ul>
         </li>
         <li>
+            <a href="school-list.php">
+                <span class="sidebar__links-icon"><i class="fa-solid fa-table-list"></i></span>
+                <p class="sidebar__links-text">List of Schools</p>
+            </a>
+        </li>
+        <li>
             <a href="bldg-list.php">
                 <span class="sidebar__links-icon"><i class="fa-solid fa-table-list"></i></span>
                 <p class="sidebar__links-text">List of Buildings</p>

@@ -94,7 +94,7 @@ $schools = $silang->getSchools();
                                 <td><?php echo $bldgCount ?></td>
                                 <td>
                                     <button class="bg-black text-white rounded-lg">
-                                        <a href="bldg-view.php?id=<?php echo $school['school_id'] ?>" class="block py-2 px-4 text-sm">
+                                        <a href="school-view.php?id=<?php echo $school['school_id'] ?>" class="block py-2 px-4 text-sm">
                                             <span class="pr-1">View</span>
                                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                         </a>

@@ -36,10 +36,32 @@ $barangays = $silang->getBarangays();
             include 'includes/query-results.inc.php';
             ?>
 
-            <div class="page-header">
-                <h3 class="page-title">Add School</h3>
+            <div class="page-header m-0">
+                <h3 class="page-title mb-6 my-4 ml-4">Add School</h3>
+
+                <!-- page tabs -->
+                <div class="border-gray-200 dark:border-gray-700">
+                    <ul class="flex flex-wrap -mb-px text-sm font-medium text-center dark:text-gray-400">
+                        <li class="mr-2">
+                            <a href="school-list.php" class="inline-flex align-items-center gap-2 p-4 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group">
+                                <span>
+                                    <i class="fa-solid fa-table-list"></i>
+                                </span>
+                                <span> List of Buildings </span>
+                            </a>
+                        </li>
+                        <li class="mr-2">
+                            <a href="#" class="inline-flex align-items-center gap-2 p-4 bg-white rounded-t-lg active dark:text-blue-500 dark:border-blue-500 group">
+                                <span>
+                                    <i class="fa-solid fa-plus"></i>
+                                </span>
+                                <span> Add School </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="page-body">
+            <div class="page-body rounded-none">
                 <form action="includes/add-school.inc.php" method="POST" enctype="multipart/form-data" onsubmit="validateForm(event)" class="mb-6">
                     <div class="mb-3">
                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Barangay Name</label>
@@ -98,31 +120,6 @@ $barangays = $silang->getBarangays();
                     </div>
                 </form>
 
-                <table id="school-table" class="row-border hover">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>School Name</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($schools as $school) { ?>
-                            <tr>
-                                <td><?php echo $school['school_id'] ?></td>
-                                <td><?php echo $school['school_name'] ?></td>
-                                <td>
-                                    <!-- Modal toggle -->
-                                    <button data-modal-target="<?php echo $school['school_id'] ?>" data-modal-toggle="<?php echo $school['school_id'] ?>" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:focus:ring-yellow-900">Edit</button>
-                                    <?php editSchool($school) ?>
-                                    <button type="button" id="deleteBtn" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2.5 mr-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
-                                        <a href="includes/del-school.inc.php?id=<?php echo $school['school_id'] ?>" onclick="return confirm('Are you sure you want to delete this school?')">Delete</a>
-                                    </button>
-                                </td>
-                            </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
             </div>
         </div>
     </main>
@@ -134,14 +131,6 @@ $barangays = $silang->getBarangays();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
     <script>
-        $(document).ready(function() {
-            $('#school-table').DataTable({
-                autoFill: true,
-                responsive: true
-            });
-
-        });
-
         $(document).ready(function() {
             $('#barangays-table').DataTable({
 

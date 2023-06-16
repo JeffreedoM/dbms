@@ -48,5 +48,5 @@ if (isset($_POST['edit-school'])) {
     // Execute the statement
     $statement->execute();
 
-    header('Location: ../add-school.php?update=success');
+    header('Location: ../school-list.php?update=success');
 }
