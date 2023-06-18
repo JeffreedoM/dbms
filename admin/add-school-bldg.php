@@ -179,7 +179,7 @@ $barangays = $silang->getBarangays(); ?>
                             </div>
                             <div>
                                 <label for="">Compliance to Accessibility Law</label>
-                                <input type="number" name="compliance" placeholder="0-100" min="0" max="100" class="w-full rounded" />
+                                <input type="number" name="compliance" placeholder="0-100" step="0.01" min="0" max="100" class="w-full rounded" />
                             </div>
                             <div>
                                 <label for="">Hazard/Risk Mitigation actions</label>

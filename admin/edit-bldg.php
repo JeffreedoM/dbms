@@ -224,7 +224,7 @@ $buildingDefects = $silang->getDefectImages($id);
                             </div>
                             <div>
                                 <label for="">Compliance to Accessibility Law</label>
-                                <input type="number" name="compliance" placeholder="0-100" min="0" max="100" class="w-full rounded" value="<?php echo $building['compliance'] ?>" />
+                                <input type="number" name="compliance" placeholder="0-100" step="0.01" min="0" max="100" class="w-full rounded" value="<?php echo $building['compliance'] ?>" />
                             </div>
                             <div>
                                 <label for="">Hazard/Risk Mitigation actions</label>

@@ -92,8 +92,8 @@ if (isset($_POST['edit-bldg'])) {
     $statement->execute($params);
 
 
-    // For uploading defect images
-    if (isset($_FILES['defect_img'])) {
+    // For adding new  defect images
+    if (!empty($_FILES['defect_img']['name'][0])) {
         $images = $_FILES['defect_img'];
 
         // Iterate over each uploaded image
@@ -118,7 +118,6 @@ if (isset($_POST['edit-bldg'])) {
             $stmt->bindValue(':file_name', $targetFileName); // Use the generated unique file name
             $stmt->execute();
         }
-
         echo "Images uploaded successfully!";
     } else {
         echo "No images selected!";
