@@ -1,0 +1,111 @@
+.building {
+  font-family: "Open Sans", sans-serif !important;
+}
+
+.building h2 {
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+.building h3 {
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 5px;
+}
+
+.defect-images img {
+  border-radius: 5px;
+  width: calc(40% - 1px);
+}
+
+.building .left {
+}
+#bldg-img {
+  border-radius: 10px;
+}
+
+.details div {
+}
+.details dt {
+  background: #dddddd;
+  border: 1px solid #dddddd;
+  padding: 10px 5px 10px 10px;
+  min-width: 230px;
+}
+
+.details dd {
+  border: 1px solid #dddddd;
+  padding: 10px 5px 10px 1rem;
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+#compliance {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  display: block;
+}
+
+#compliance dt {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+}
+
+@media only screen and (min-width: 468px) {
+  .defect-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+  .defect-images img {
+    width: calc((100% / 2) - 5px);
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .building .left {
+    width: 35%;
+    padding-top: 0.5rem;
+  }
+  .building .right {
+    width: 70%;
+  }
+  .building {
+    display: flex;
+    gap: 2.5rem;
+  }
+
+  .building h2 {
+    margin-top: 0;
+  }
+
+  /* building details */
+  .details div {
+    display: flex;
+    width: 100%;
+  }
+
+  .details dt {
+    margin-bottom: 5px;
+    border-radius: 5px 0 0 5px;
+  }
+
+  .details dd {
+    margin-bottom: 5px;
+    border-radius: 0 5px 5px 0;
+  }
+
+  /* defect images */
+  .defect-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+  .defect-images img {
+    width: calc((100% / 3) - 5px);
+  }
+}
