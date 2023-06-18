@@ -20,6 +20,8 @@ fetch("assets/js/card-template.handlebars")
           ? `admin/assets/images/uploads/${building.bldg_image}`
           : "admin/assets/images/uploads/bldg_default.jpg",
         buildingName: building.building_name,
+        location: building.location,
+        building_id: building.building_id,
       };
       const html = template(context);
       const cardElement = document.createElement("div");

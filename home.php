@@ -180,17 +180,19 @@ $buildings = $silang->getBuildings();
                     foreach ($searchResults as $building) {
                 ?>
                         <div class="cards">
-                            <div class="card-img">
-                                <?php if (!empty($building['bldg_image'])) : ?>
-                                    <img src="admin/assets/images/uploads/<?php echo $building['bldg_image']; ?>" alt="" srcset="" />
-                                <?php else : ?>
-                                    <img src="admin/assets/images/uploads/bldg_default.jpg" alt="" srcset="" />
-                                <?php endif; ?>
-                            </div>
-                            <div class="card-body">
-                                <h3 class="card-title"><?php echo $building['building_name'] ?></h3>
-                                <p>Card description</p>
-                            </div>
+                            <a href="bldg-view.php?id=<?php echo $building['building_id'] ?>" target="_blank">
+                                <div class="card-img">
+                                    <?php if (!empty($building['bldg_image'])) : ?>
+                                        <img src="admin/assets/images/uploads/<?php echo $building['bldg_image']; ?>" alt="" srcset="" />
+                                    <?php else : ?>
+                                        <img src="admin/assets/images/uploads/bldg_default.jpg" alt="" srcset="" />
+                                    <?php endif; ?>
+                                </div>
+                                <div class="card-body">
+                                    <h3 class="card-title"><?php echo $building['building_name'] ?></h3>
+                                    <p><?php echo $building['location'] ?></p>
+                                </div>
+                            </a>
                         </div>
                 <?php }
                 } ?>
