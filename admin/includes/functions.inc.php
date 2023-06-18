@@ -111,8 +111,23 @@ class Silang
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
-        // Fetch all rows as an associative array
+        // Fetch row as an associative array
         $buildings = $stmt->fetch();
+
+        return $buildings;
+    }
+
+    public function getBuildingBySchoolId($id)
+    {
+        $query = "SELECT * FROM tbl_school_buildings sb
+        JOIN tbl_schools s ON sb.school_id = s.school_id
+        JOIN tbl_barangays b ON s.barangay_id = b.barangay_id
+        WHERE sb.school_id=:id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        // Fetch all rows as an associative array
+        $buildings = $stmt->fetchAll();
 
         return $buildings;
     }

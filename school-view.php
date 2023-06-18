@@ -5,7 +5,9 @@ include 'admin/includes/functions.inc.php';
 $id = $_GET['id'];
 $school = $silang->getSchoolById($id);
 
-// var_dump($school);
+$buildings = $silang->getBuildingBySchoolId($id);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -87,9 +89,31 @@ $school = $silang->getSchoolById($id);
                     </div>
                 </div>
                 <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
-                    <p class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the <strong class="font-medium text-gray-800 dark:text-white">Dashboard tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
+                    <!-- <p class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the <strong class="font-medium text-gray-800 dark:text-white">Dashboard tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p> -->
+                    <!-- Cards -->
+                    <div class="card-container" id="card-container">
+                        <?php foreach ($buildings as $building) : ?>
+                            <div class="cards">
+                                <a href="bldg-view.php?id=<?php echo $building['building_id'] ?>" target="_blank">
+                                    <div class="card-img">
+                                        <?php if (!empty($building['bldg_image'])) : ?>
+                                            <img src="admin/assets/images/uploads/<?php echo $building['bldg_image']; ?>" alt="" srcset="" />
+                                        <?php else : ?>
+                                            <img src="admin/assets/images/uploads/bldg_default.jpg" alt="" srcset="" />
+                                        <?php endif; ?>
+                                    </div>
+                                    <div class="card-body">
+                                        <h3 class="card-title"><?php echo $building['building_name'] ?></h3>
+                                        <p><?php echo $building['location'] ?></p>
+                                    </div>
+                                </a>
+                            </div>
+                        <?php endforeach ?>
+
+                    </div>
                 </div>
             </div>
+        </div>
 
         </div>
     </main>
