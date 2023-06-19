@@ -48,7 +48,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <script src="https://cdn.tailwindcss.com"></script>
 
     <link rel="stylesheet" href="assets/css/main.css">
-    <title>DBMS</title>
+    <?php
+    include 'partials/title.php';
+    ?>
 
     <style>
         /* show password */

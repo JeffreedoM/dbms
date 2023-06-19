@@ -16,7 +16,7 @@ $schools = $silang->getSchools();
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="assets/css/main.css">
-    <title>DBMS</title>
+    <?php include 'admin/partials/title.php'; ?>
 
     <style>
         nav {

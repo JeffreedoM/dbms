@@ -27,7 +27,7 @@ $defects = $silang->getDefectImages($id);
 
     <link rel="stylesheet" href="assets/css/magnify.css">
     <link rel="stylesheet" href="assets/css/main.css">
-    <title>DBMS</title>
+    <?php include 'admin/partials/title.php'; ?>
 
     <style>
         nav {
@@ -140,9 +140,9 @@ $defects = $silang->getDefectImages($id);
                 <div class="left">
                     <!-- Building Image -->
                     <?php if (!empty($building['bldg_image'])) : ?>
-                        <img src="admin/assets/images/uploads/<?php echo $building['bldg_image']; ?>" alt="" id="bldg-img" />
+                        <img src="admin/assets/images/uploads/<?php echo $building['bldg_image']; ?>" alt="" id="bldg-img" onclick="openImageViewer(this)" />
                     <?php else : ?>
-                        <img src="admin/assets/images/uploads/bldg_default.jpg" alt="" id="bldg-img" />
+                        <img src="admin/assets/images/uploads/bldg_default.jpg" alt="" id="bldg-img" onclick="openImageViewer(this)" />
                     <?php endif; ?>
 
                     <h3>Sample Defects Found:</h3>

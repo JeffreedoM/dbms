@@ -18,8 +18,11 @@ $barangays = $silang->getBarangays();
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="assets/css/main.css">
-    <title>DBMS</title>
+    <?php
+    include 'partials/title.php';
+    ?>
 </head>
+
 
 <body>
     <?php
@@ -86,18 +89,18 @@ $barangays = $silang->getBarangays();
                                     </div>
                                     <!-- Modal body -->
                                     <div class="p-6">
-                                        <table id="barangays-table" class="row-border hover">
+                                        <table id="barangays-table" class="row-border hover" style="width: 100%">
                                             <thead>
                                                 <tr>
-                                                    <th>ID</th>
-                                                    <th>Barangay Name</th>
+                                                    <th style="display: none">ID</th>
+                                                    <th style="width: 100%">Barangay Name</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php foreach ($barangays as $barangay) { ?>
                                                     <tr id="<?php echo $barangay['barangay_id'] ?>" style="cursor:pointer" data-modal-hide="barangay-modal">
-                                                        <td><?php echo $barangay['barangay_id'] ?></td>
-                                                        <td><?php echo $barangay['barangay_name'] ?></td>
+                                                        <td style="display: none"><?php echo $barangay['barangay_id'] ?></td>
+                                                        <td style="width: 100%"><?php echo $barangay['barangay_name'] ?></td>
                                                     </tr>
                                                 <?php } ?>
                                             </tbody>

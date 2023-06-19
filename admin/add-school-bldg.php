@@ -16,7 +16,9 @@ $barangays = $silang->getBarangays(); ?>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
     <link rel="stylesheet" href="assets/css/main.css" />
-    <title>DBMS</title>
+    <?php
+    include 'partials/title.php';
+    ?>
 </head>
 
 <body>
@@ -107,18 +109,18 @@ $barangays = $silang->getBarangays(); ?>
                                         </div>
                                         <!-- Modal body -->
                                         <div class="p-6">
-                                            <table id="schools-table" class="row-border hover">
+                                            <table id="schools-table" class="row-border hover" style="width: 100%">
                                                 <thead>
                                                     <tr>
-                                                        <th>ID</th>
-                                                        <th>School Name</th>
+                                                        <th style="display: none">ID</th>
+                                                        <th style="width: 100%">School Name</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php foreach ($schools as $school) { ?>
                                                         <tr id="<?php echo $school['school_id'] ?>" style="cursor: pointer" data-modal-hide="school-modal">
-                                                            <td><?php echo $school['school_id'] ?></td>
-                                                            <td><?php echo $school['school_name'] ?></td>
+                                                            <td style="display: none"><?php echo $school['school_id'] ?></td>
+                                                            <td style="width: 100%"><?php echo $school['school_name'] ?></td>
                                                         </tr>
                                                     <?php } ?>
                                                 </tbody>

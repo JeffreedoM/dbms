@@ -94,7 +94,7 @@ if (isset($_POST['add-bldg'])) {
 
 
     // For uploading defect images
-    if (isset($_FILES['defect_img'])) {
+    if (!empty($_FILES['defect_img']['name'][0])) {
         $images = $_FILES['defect_img'];
 
         // Iterate over each uploaded image
@@ -127,5 +127,5 @@ if (isset($_POST['add-bldg'])) {
 
 
     // echo "<script>alert('Insertion successful!');</script>";
-    // header('Location: ../add-school-bldg.php');
+    header('Location: ../add-school-bldg.php');
 }

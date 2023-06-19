@@ -16,7 +16,9 @@ $barangays = $silang->getBarangays();
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="assets/css/main.css">
-    <title>DBMS</title>
+    <?php
+    include 'partials/title.php';
+    ?>
 </head>
 
 <body>
