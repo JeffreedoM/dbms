@@ -16,6 +16,7 @@
 .defect-images img {
   border-radius: 5px;
   width: calc(40% - 1px);
+  cursor: pointer;
 }
 
 .building .left {

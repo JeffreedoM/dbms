@@ -68,9 +68,9 @@ $defects = $silang->getDefectImages($id);
             max-height: 90%;
         }
 
-        .anychart-credits {
+        /* .anychart-credits {
             visibility: hidden;
-        }
+        } */
     </style>
 </head>
 
@@ -203,7 +203,7 @@ $defects = $silang->getDefectImages($id);
                             <dt>Physical Conditions</dt>
                             <dd><?php echo $building['physical_conditions'] ?></dd>
                         </div>
-                        <!-- <dt style="background: none; border:none;">Compliance</dt> -->
+                        <dt style="background: none; border:none;">Compliance</dt>
                         <div id="container" style="width: 100%; height: 400px;"></div>
                         <div>
                             <dt>Hazard/Risk Mitigation Actions</dt>
@@ -250,7 +250,7 @@ $defects = $silang->getDefectImages($id);
 
             // set chart title text settings
             chart
-                .title('Compliance').radius('100%');
+                .title('').radius('100%');
 
             // set the position of the legend
             chart.legend()
