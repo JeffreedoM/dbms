@@ -1,6 +1,7 @@
 <?php
 include 'admin/includes/dbh.inc.php';
 include 'admin/includes/functions.inc.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +33,7 @@ include 'admin/includes/functions.inc.php';
 <body>
     <nav class="bg-white border-gray-200 dark:bg-gray-900">
         <div class="wrapper max-w-screen-lg flex flex-wrap items-center justify-between mx-auto py-4 md:py-0">
-            <a href="#" class="flex items-center">
+            <a href="home.php" class="flex items-center">
                 <!-- <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 mr-3" alt="Flowbite Logo" /> -->
                 <span class="self-center text-lg font-semibold whitespace-nowrap text-blue-700">Building Audits <span class="text-gray-500"> in Silang </span></span>
             </a>
@@ -48,15 +49,36 @@ include 'admin/includes/functions.inc.php';
                         <a href="home.php" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Home</a>
                     </li>
                     <li>
-                        <a href="about.php" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About Us</a>
+                        <a href="about.php" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a>
                     </li>
                     <li>
-                        <a href="#" class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">Building Audits</a>
+                        <a href="bldg-audit.php" class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">Building Audits</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+
+    <main style="font-family: 'Open Sans', sans-serif;">
+        <div class="wrapper bg-gray-50 rounded-lg p-6">
+            <div class="min-h-screen ">
+                <h1 class="text-3xl text-center font-semibold mb-5">About This Page</h1>
+                <div>
+                    <p class="mb-5">
+                        This site contains a summary of the results and documentation from all the buildings audited by the researchers in the municipality of Silang.
+                    </p>
+                    <p class="mb-5">
+                        Infraudit and accessibility audits were done by the researchers to check the current status of the building, particularly from Cavite State University's Silang Campus and DepEd Schools in Silang, Cavite, whether it is vulnerable to earthquakes or not, and if it complies with BP 344 or the Accessibility Law.
+                    </p>
+                    <p class="mb-5">
+                        This site is made as per instruction by the Infrastructure Audit Manual. This site will allow the building facilitators of the schools to check the current status of their buildings easily.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
 </body>
 
