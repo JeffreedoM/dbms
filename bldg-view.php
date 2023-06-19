@@ -241,10 +241,11 @@ $defects = $silang->getDefectImages($id);
     </script>
     <script>
         anychart.onDocumentReady(function() {
+
             // create pie chart with passed data
             var chart = anychart.pie3d([
-                ['Yes', 62.5],
-                ['No', (100 - 62.5)],
+                ['Yes', <?php echo $building['compliance'] ?>],
+                ['No', (100 - <?php echo $building['compliance'] ?>)],
 
             ]);
 
