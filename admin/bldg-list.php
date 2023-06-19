@@ -70,7 +70,6 @@ $buildings = $silang->getBuildings();
                 <table id="bldg-table" class="row-border hover">
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Building</th>
                             <th>Action</th>
                         </tr>
@@ -78,7 +77,6 @@ $buildings = $silang->getBuildings();
                     <tbody>
                         <?php foreach ($buildings as $building) { ?>
                             <tr>
-                                <td><?php echo $building['building_id'] ?></td>
                                 <td><?php echo $building['building_name'] ?></td>
                                 <td>
                                     <button type="button" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm dark:focus:ring-yellow-900">

@@ -48,7 +48,6 @@ $barangays = $silang->getBarangays();
                 <table id="barangays-table" class="row-border hover">
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Barangay Name</th>
                             <th>Action</th>
                         </tr>
@@ -56,7 +55,6 @@ $barangays = $silang->getBarangays();
                     <tbody>
                         <?php foreach ($barangays as $barangay) { ?>
                             <tr>
-                                <td><?php echo $barangay['barangay_id'] ?></td>
                                 <td><?php echo $barangay['barangay_name'] ?></td>
                                 <td>
                                     <!-- Modal toggle -->
