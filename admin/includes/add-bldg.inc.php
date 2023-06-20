@@ -9,7 +9,6 @@ if (isset($_POST['add-bldg'])) {
 
     $location = $_POST['location'] ?? '';
     $storey = $_POST['storey'] ?? '';
-    $year_nscp = $_POST['year_nscp'] ?? '';
     $type_of_bldg = $_POST['type_of_bldg'] ?? '';
     $type_of_structure = $_POST['type_of_structure'] ?? '';
     $design_occupancy = $_POST['design_occupancy'] ?? '';
@@ -39,7 +38,6 @@ if (isset($_POST['add-bldg'])) {
         bldg_image,
         location,
         storey,
-        year_nscp,
         type_of_bldg,
         type_of_structure,
         design_occupancy,
@@ -55,7 +53,6 @@ if (isset($_POST['add-bldg'])) {
         :bldg_image,
         :location,
         :storey,
-        :year_nscp,
         :type_of_bldg,
         :type_of_structure,
         :design_occupancy,
@@ -73,15 +70,14 @@ if (isset($_POST['add-bldg'])) {
         ':bldg_image' => $fileNameNew ?? '',
         ':location' => $location ?? '',
         ':storey' => $storey ?? '',
-        ':year_nscp' => $year_nscp ?? '',
         ':type_of_bldg' => $type_of_bldg ?? '',
         ':type_of_structure' => $type_of_structure ?? '',
         ':design_occupancy' => $design_occupancy ?? '',
         ':rvs_score' => $rvs_score ?? '',
         ':vulnerability' => $vulnerability ?? '',
-        ':physical_conditions' => $physical_conditions ?? '',
+        ':physical_conditions' => nl2br($physical_conditions) ?? '',
         ':compliance' => $compliance ?? '',
-        ':mitigation_actions' => $mitigation_actions ?? ''
+        ':mitigation_actions' => nl2br($mitigation_actions) ?? ''
     );
 
     // Execute the prepared statement

@@ -7,7 +7,6 @@ $school = $silang->getSchoolById($id);
 
 $buildings = $silang->getBuildingBySchoolId($id);
 
-
 ?>
 
 <!DOCTYPE html>

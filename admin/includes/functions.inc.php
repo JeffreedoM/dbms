@@ -73,15 +73,10 @@ class Silang
     public function getSchoolById($school_id)
     {
 
-        $query = "SELECT *
-          FROM tbl_barangays b
-          JOIN tbl_schools s ON b.barangay_id = s.barangay_id
-          JOIN tbl_school_buildings sb ON s.school_id = sb.school_id
-          WHERE s.school_id = :school_id";
+        $query = "SELECT * FROM tbl_schools WHERE school_id = :school_id";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':school_id', $school_id);
         $stmt->execute();
-        // Fetch the row as an associative array
         $school = $stmt->fetch();
 
         return $school;

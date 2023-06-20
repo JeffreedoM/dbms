@@ -218,7 +218,7 @@ $buildingDefects = $silang->getDefectImages($id);
                             </div>
                             <div>
                                 <label for="">Physical Conditions</label>
-                                <textarea name="physical_conditions" id="" cols="30" rows="6" class="w-full rounded-lg p-2" value="<?php echo $building['physical_conditions'] ?>"></textarea>
+                                <textarea name="physical_conditions" id="" cols="30" rows="6" class="w-full rounded-lg p-2"><?php echo str_replace('<br />', "", $building['physical_conditions']) ?></textarea>
                             </div>
                             <div>
                                 <label for="">Compliance to Accessibility Law</label>
@@ -226,7 +226,7 @@ $buildingDefects = $silang->getDefectImages($id);
                             </div>
                             <div>
                                 <label for="">Hazard/Risk Mitigation actions</label>
-                                <textarea name="mitigation_actions" id="" cols="30" rows="6" class="w-full rounded-lg p-2" value="<?php echo $building['mitigation_actions'] ?>"></textarea>
+                                <textarea name="mitigation_actions" id="" cols="30" rows="6" class="w-full rounded-lg p-2"><?php echo str_replace('<br />', "", $building['mitigation_actions']) ?></textarea>
                             </div>
 
                             <button type="submit" name="edit-bldg" id="submitButton" class="w-full block mx-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mt-5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
