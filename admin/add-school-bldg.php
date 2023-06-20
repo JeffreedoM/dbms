@@ -146,10 +146,6 @@ $barangays = $silang->getBarangays(); ?>
                                 <input type="text" name="storey" placeholder="" class="w-full rounded" />
                             </div>
                             <div>
-                                <label for="">Year/Edition of NSCP Used:</label>
-                                <input type="text" name="year_nscp" placeholder="" class="w-full rounded" />
-                            </div>
-                            <div>
                                 <label for="">Type of Building</label>
                                 <input type="text" name="type_of_bldg" placeholder="" class="w-full rounded" />
                             </div>

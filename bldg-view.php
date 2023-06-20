@@ -174,10 +174,6 @@ $defects = $silang->getDefectImages($id);
                             <dd><?php echo $building['storey'] ?></dd>
                         </div>
                         <div>
-                            <dt>Year/Edition of NSCP Used</dt>
-                            <dd><?php echo $building['year_nscp'] ?></dd>
-                        </div>
-                        <div>
                             <dt>Type of Building</dt>
                             <dd><?php echo $building['type_of_bldg'] ?></dd>
                         </div>
@@ -203,7 +199,7 @@ $defects = $silang->getDefectImages($id);
                             <dt>Physical Conditions</dt>
                             <dd><?php echo $building['physical_conditions'] ?></dd>
                         </div>
-                        <dt style="background: none; border:none;">Compliance</dt>
+                        <dt style="background: none; border:none;">Compliance to Accessibility Law</dt>
                         <div id="container" style="width: 100%; height: 400px;"></div>
                         <div>
                             <dt>Hazard/Risk Mitigation Actions</dt>
