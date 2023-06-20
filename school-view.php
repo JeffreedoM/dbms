@@ -1,6 +1,6 @@
 <?php
 include 'admin/includes/dbh.inc.php';
-include 'admin/includes/functions.inc.php';
+require_once 'admin/includes/functions.inc.php';
 
 $id = $_GET['id'];
 $school = $silang->getSchoolById($id);

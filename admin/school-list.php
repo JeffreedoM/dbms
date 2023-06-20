@@ -1,6 +1,6 @@
 <?php
 include 'includes/session.inc.php';
-include 'includes/functions.inc.php';
+require_once 'includes/functions.inc.php';
 include 'includes/modals.inc.php';
 
 $schools = $silang->getSchools();
