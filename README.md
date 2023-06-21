@@ -27,7 +27,7 @@ Users can search for the barangay:
   
 ### About
 ---
-- About the Silang Building Audits Website.
+- About the Silang Building Audit Website.
   
 ### Building Audits
 ---
