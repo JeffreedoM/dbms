@@ -3,22 +3,36 @@
 ## Admin Panel
 
 ### Add Data
-- `Add Barangay` - User can add and edit barangay.
-- `Add School` - User can add school.
-- `Add School Building` - User can add school buildings.
+- `Add Barangay` - Admin can add and edit barangay.
+- `Add School` - Admin can add school.
+- `Add School Building` - Admin can add school buildings.
 
 ### List of Schools
 - list of schools added to the system.
-- User can edit and delete schools.
+- Admin can edit and delete schools.
 ### List of Buildings
 - list of school buildings added to the system.
-- User can edit and delete school buildings.
+- Admin can edit and delete school buildings.
 
 ### account settings
-- change account username and password
+- change account username and password.
 
 
-## Admin Panel
+## User-interface
+### Home
+---
+Users can search for the barangay:
+- `keyword search` - Users can search building name based on the given keyword.
+- `category search` - Users can filter search based on the barangay and school.
+  
+### About
+---
+- About the Silang Building Audits Website.
+  
+### Building Audits
+---
+- Shows the list of schools and the no. of buildings of each school.
+- 
 
 [You can visit the website here.](http://silang-building-audits.unaux.com/)
 
