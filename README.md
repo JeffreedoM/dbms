@@ -32,7 +32,11 @@ Users can search for the barangay:
 ### Building Audits
 ---
 - Shows the list of schools and the no. of buildings of each school.
-- 
+- Users can view the school to show site development plan and list of school buildings.
+- `Site Development Plan` - shows the site development plan of the school.
+- `List of Buildings` - shows the list of buildings in the school.
+- - `Building details` - shows the information about the selected building.
+
 
 [You can visit the website here.](http://silang-building-audits.unaux.com/)
 
