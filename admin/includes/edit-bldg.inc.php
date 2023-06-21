@@ -53,6 +53,7 @@ if (isset($_POST['edit-bldg'])) {
     }
 
     $statement = $pdo->prepare("UPDATE tbl_school_buildings SET
+        school_id = :school_id,
         building_name = :building_name,
         year_established = :year_established,
         bldg_image = :bldg_image,
@@ -69,6 +70,7 @@ if (isset($_POST['edit-bldg'])) {
     WHERE building_id = :building_id");
 
     $params = array(
+        ':school_id' => $school_id ?? '',
         ':building_id' => $building_id ?? '',
         ':building_name' => $building_name ?? '',
         ':year_established' => $year_established ?? '',
