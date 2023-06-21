@@ -14,5 +14,5 @@ if (isset($_POST['add-brgy'])) {
     $statement->execute();
 
     echo "<script>alert('Insertion successful!');</script>";
-    header('Location: ../add-brgy.php');
+    header('Location: ../add-brgy.php?message=Successfully Added!');
 }
