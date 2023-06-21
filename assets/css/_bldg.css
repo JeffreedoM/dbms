@@ -12,10 +12,17 @@
   margin-top: 1rem;
   margin-bottom: 5px;
 }
-
+.defect-images {
+  /* display: block; */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  width: 100%;
+}
 .defect-images img {
   border-radius: 5px;
-  width: calc(40% - 1px);
+  /* width: calc(50% - 1px); */
+  width: 100%;
   cursor: pointer;
 }
 
@@ -40,6 +47,7 @@
   padding: 10px 5px 10px 1rem;
   margin-bottom: 5px;
   width: 100%;
+  word-wrap: break-word;
 }
 
 #compliance {
