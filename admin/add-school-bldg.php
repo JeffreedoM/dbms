@@ -32,6 +32,8 @@ $barangays = $silang->getBarangays(); ?>
         ?>
 
         <div class="wrapper">
+            <?php include 'includes/query-results.inc.php'; ?>
+
             <div class="page-header m-0">
                 <h3 class="page-title mb-6 ml-4">School Building</h3>
 
@@ -198,6 +200,7 @@ $barangays = $silang->getBarangays(); ?>
     <script src="assets/js/sidebar.js"></script>
     <script src="assets/js/select-school.js"></script>
     <script src="assets/js/uploading-img.js"></script>
+    <script src="assets/js/query-results.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>

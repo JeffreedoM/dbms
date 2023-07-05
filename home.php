@@ -175,10 +175,8 @@ $buildings = $silang->getBuildings();
         <div class="wrapper">
 
             <div class="card-container" id="card-container">
-                <?php
-                if (isset($searchResults)) {
-                    foreach ($searchResults as $building) {
-                ?>
+                <?php if (isset($searchResults)) { ?>
+                    <?php foreach ($searchResults as $building) { ?>
                         <div class="cards">
                             <a href="bldg-view.php?id=<?php echo $building['building_id'] ?>" target="_blank">
                                 <div class="card-img">
@@ -194,10 +192,26 @@ $buildings = $silang->getBuildings();
                                 </div>
                             </a>
                         </div>
-                <?php }
-                } ?>
-                <!-- if it is not set -->
-                <!-- Content in here will be dynamic -->
+                    <?php } ?>
+                <?php } else { ?>
+                    <?php foreach ($buildings as $building) : ?>
+                        <div class="cards">
+                            <a href="bldg-view.php?id=<?php echo $building['building_id'] ?>" target="_blank">
+                                <div class="card-img">
+                                    <?php if (!empty($building['bldg_image'])) : ?>
+                                        <img src="admin/assets/images/uploads/<?php echo $building['bldg_image']; ?>" alt="" srcset="" />
+                                    <?php else : ?>
+                                        <img src="admin/assets/images/uploads/bldg_default.jpg" alt="" srcset="" />
+                                    <?php endif; ?>
+                                </div>
+                                <div class="card-body">
+                                    <h3 class="card-title"><?php echo $building['building_name'] ?></h3>
+                                    <p><?php echo $building['location'] ?></p>
+                                </div>
+                            </a>
+                        </div>
+                    <?php endforeach ?>
+                <?php } ?>
             </div>
         </div>
     </main>
@@ -211,14 +225,12 @@ $buildings = $silang->getBuildings();
         echo '<script>const fetchMore = true</script>';
     } ?>
 
-    <script src="assets/js/lazy-load.js"></script>
-    <script src="assets/js/handlebars.min-v4.7.7.js"></script>
+    <!-- <script src="assets/js/lazy-load.js"></script> -->
+    <!-- <script src="assets/js/handlebars.min-v4.7.7.js"></script> -->
     <script src="assets/js/scroll-to-top.js"></script>
     <script src="assets/js/dynamic-select.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
     <script>
-        console.log(fetchMore);
-
         function validateForm() {
             var form = document.getElementById("search-form");
             var elements = form.elements;

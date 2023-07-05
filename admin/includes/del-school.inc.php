@@ -30,8 +30,8 @@ $stmt->execute();
 $defect_images = $stmt->fetchAll();
 
 for ($i = 0; $i < count($defect_images); $i++) {
-    // delete the defect_images in the uploads folder
-    unlink('../assets/images/uploads/' . $defect_images[$i]['defect_images']);
+        // delete the defect_images in the uploads folder
+        unlink('../assets/images/uploads/' . $defect_images[$i]['defect_images']);
 }
 // delete the sitedev_plan image  in the uploads folder
 unlink('../assets/images/uploads/' . $row['sitedev_plan']);
@@ -45,5 +45,5 @@ $statement = $pdo->prepare("DELETE FROM tbl_schools WHERE school_id = :id");
 $statement->bindParam(':id', $id);
 $statement->execute();
 
-// Go back to the add-school page
-header('Location: ../add-school.php?delete=success');
+// Go back to the school-list page
+header('Location: ../school-list.php?delete=success');

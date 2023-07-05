@@ -123,5 +123,5 @@ if (isset($_POST['add-bldg'])) {
 
 
     // echo "<script>alert('Insertion successful!');</script>";
-    header('Location: ../add-school-bldg.php');
+    header('Location: ../add-school-bldg.php?message=Successfully Added!');
 }
